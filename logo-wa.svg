@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap');
+    </style>
+
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0F0C29"/>
+      <stop offset="45%"  stop-color="#302B63"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+    <linearGradient id="goldV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <radialGradient id="globeShine" cx="38%" cy="35%" r="55%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#818CF8" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#302B63" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="textShadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F0C29" flood-opacity="0.6"/>
+    </filter>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- BACKGROUND -->
+  <rect width="800" height="800" fill="url(#bgGrad)"/>
+  <ellipse cx="400" cy="380" rx="380" ry="340" fill="url(#centerGlow)"/>
+  <circle cx="760" cy="80" r="180" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <circle cx="760" cy="80" r="130" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <circle cx="760" cy="80" r="80"  fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <circle cx="40"  cy="720" r="160" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <circle cx="40"  cy="720" r="110" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <g fill="rgba(255,255,255,0.07)">
+    <circle cx="648" cy="108" r="2.5"/><circle cx="676" cy="108" r="2.5"/><circle cx="704" cy="108" r="2.5"/>
+    <circle cx="648" cy="136" r="2.5"/><circle cx="676" cy="136" r="2.5"/><circle cx="704" cy="136" r="2.5"/>
+    <circle cx="648" cy="164" r="2.5"/><circle cx="676" cy="164" r="2.5"/><circle cx="704" cy="164" r="2.5"/>
+    <circle cx="96"  cy="636" r="2.5"/><circle cx="124" cy="636" r="2.5"/><circle cx="152" cy="636" r="2.5"/>
+    <circle cx="96"  cy="664" r="2.5"/><circle cx="124" cy="664" r="2.5"/><circle cx="152" cy="664" r="2.5"/>
+    <circle cx="96"  cy="692" r="2.5"/><circle cx="124" cy="692" r="2.5"/><circle cx="152" cy="692" r="2.5"/>
+  </g>
+  <line x1="0"   y1="600" x2="200" y2="800" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="600" y1="0"   x2="800" y2="200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- ══════════ GLOBE ══════════ -->
+  <circle cx="400" cy="192" r="96" fill="rgba(99,102,241,0.2)" filter="url(#goldGlow)"/>
+  <circle cx="400" cy="192" r="80" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+  <circle cx="400" cy="192" r="80" fill="url(#globeShine)"/>
+  <line x1="320" y1="192" x2="480" y2="192" stroke="rgba(245,158,11,0.55)" stroke-width="1.5"/>
+  <ellipse cx="400" cy="192" rx="36" ry="80" fill="none" stroke="rgba(245,158,11,0.45)" stroke-width="1.5"/>
+  <path d="M 335 162 A 65 25 0 0 1 465 162" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <path d="M 335 222 A 65 25 0 0 0 465 222" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <g transform="translate(454,234) rotate(-12)" filter="url(#goldGlow)">
+    <path d="M0,0 L0,34 L9,26 L15,42 L20,40 L14,24 L24,24 Z"
+          fill="url(#goldV)" stroke="#0F0C29" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ══════════ TOP GOLD RULE ══════════ -->
+  <rect x="110" y="314" width="580" height="1.5" rx="1" fill="url(#goldH)" opacity="0.65"/>
+  <rect x="394" y="308" width="12" height="12" rx="2" fill="url(#goldH)" transform="rotate(45 400 314)"/>
+
+  <!-- ══════════ ARABIC NAME ══════════ -->
+  <text x="400" y="393"
+        font-family="'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif"
+        font-size="70" font-weight="900" fill="#FFFFFF"
+        text-anchor="middle" filter="url(#textShadow)">آدم الحدسي</text>
+
+  <text x="400" y="426"
+        font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+        font-size="17" font-weight="700" font-style="italic"
+        fill="rgba(255,255,255,0.40)" text-anchor="middle" letter-spacing="7">Adam Elhaddassi</text>
+
+  <circle cx="385" cy="453" r="4" fill="url(#goldH)"/>
+  <circle cx="400" cy="453" r="4" fill="url(#goldH)"/>
+  <circle cx="415" cy="453" r="4" fill="url(#goldH)"/>
+
+  <!-- ══════════ SERVICE TITLE ══════════ -->
+  <text x="400" y="502"
+        font-family="'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif"
+        font-size="30" font-weight="700" fill="url(#goldH)"
+        text-anchor="middle" filter="url(#goldGlow)">تصميم مواقع احترافية</text>
+
+  <text x="400" y="546"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="21" font-weight="700"
+        fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="4">PROFESSIONAL WEB DESIGN</text>
+
+  <!-- ══════════ DIVIDER ══════════ -->
+  <rect x="160" y="578" width="480" height="1" rx="0.5" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- ══════════ EMAIL + PHONE — ONE LINE ══════════
+       Layout (text-anchor="start", font-size=16, Inter):
+         email text ≈ 220px | gap=28 | phone text ≈ 150px
+         icon(22)+gap(10)+220 + 28 + icon(15)+gap(10)+150 = 455px
+         start x = 400 - 455/2 = 172
+  -->
+
+  <!-- Envelope icon — x=172, vertically centered on y=622 -->
+  <g transform="translate(172, 614)">
+    <rect x="0" y="0" width="22" height="15" rx="2"
+          fill="none" stroke="url(#goldH)" stroke-width="1.5"/>
+    <polyline points="0,0 11,9 22,0"
+              fill="none" stroke="url(#goldH)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Email text — starts at 172+22+10=204 -->
+  <text x="204" y="625"
+        font-family="'Inter', 'Segoe UI', Arial, sans-serif"
+        font-size="16" font-weight="600"
+        fill="rgba(255,255,255,0.92)"
+        text-anchor="start">elhaddassiadam@gmail.com</text>
+
+  <!-- Separator dot -->
+  <circle cx="442" cy="619" r="3" fill="rgba(245,158,11,0.60)"/>
+
+  <!-- Phone icon — x=455, vertically centered on y=622 -->
+  <g transform="translate(455, 611)">
+    <rect x="0" y="0" width="15" height="21" rx="3"
+          fill="none" stroke="url(#goldH)" stroke-width="1.5"/>
+    <circle cx="7.5" cy="17.5" r="1.8" fill="url(#goldH)"/>
+    <line x1="4" y1="4" x2="11" y2="4"
+          stroke="rgba(245,158,11,0.4)" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Phone text — starts at 455+15+10=480 -->
+  <text x="480" y="625"
+        font-family="'Inter', 'Segoe UI', Arial, sans-serif"
+        font-size="16" font-weight="600"
+        fill="rgba(255,255,255,0.92)"
+        text-anchor="start">+212 693 680 068</text>
+
+  <!-- ══════════ BOTTOM GOLD RULE ══════════ -->
+  <rect x="110" y="655" width="580" height="1.5" rx="1" fill="url(#goldH)" opacity="0.50"/>
+
+  <!-- ══════════ WEBSITE DOMAIN ══════════ -->
+  <text x="400" y="710"
+        font-family="'Inter', 'Segoe UI', Arial, sans-serif"
+        font-size="28" font-weight="700" fill="#FFFFFF"
+        text-anchor="middle" letter-spacing="2"
+        filter="url(#textShadow)">elhaddassiadam.com</text>
+
+  <!-- Gold underline for domain -->
+  <rect x="196" y="720" width="408" height="2" rx="1" fill="url(#goldH)" opacity="0.45"/>
+
+  <!-- ══════════ CORNER BRACKETS ══════════ -->
+  <path d="M 50 50 L 50 80 L 80 80"       fill="none" stroke="rgba(245,158,11,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 750 50 L 750 80 L 720 80"    fill="none" stroke="rgba(245,158,11,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 50 750 L 50 720 L 80 720"    fill="none" stroke="rgba(245,158,11,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 750 750 L 750 720 L 720 720" fill="none" stroke="rgba(245,158,11,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

@@ -175,7 +175,8 @@ input, textarea, select { font-family: inherit; }
   gap: 20px;
 }
 .logo-link { display: flex; align-items: center; }
-.logo-svg { height: 44px; width: auto; }
+.logo-svg { height: 48px; width: auto; transition: filter .3s; }
+.navbar.scrolled .logo-svg { filter: drop-shadow(0 1px 4px rgba(30,27,75,0.45)); }
 
 .nav-links {
   display: flex;
