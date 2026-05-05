@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>تحميل اللوغو</title>
+<style>
+  * { margin:0; padding:0; }
+  body {
+    background: #0F0C29;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+  }
+  #msg {
+    color: #F59E0B;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 24px;
+    border: 1px solid #F59E0B;
+    border-radius: 8px;
+    background: rgba(245,158,11,0.08);
+  }
+  button {
+    padding: 14px 32px;
+    background: #F59E0B;
+    color: #0F0C29;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover { background: #FCD34D; }
+  canvas { display: none; }
+</style>
+</head>
+<body>
+
+<p id="msg">اضغط الزر لتحميل اللوغو PNG بجودة 800×800</p>
+<button onclick="downloadLogo()">⬇ تحميل اللوغو PNG</button>
+
+<!-- اللوغو المخفي للتحويل -->
+<svg id="logo" xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 800 800" width="800" height="800"
+     style="position:absolute;left:-9999px;top:-9999px;">
+
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0F0C29"/>
+      <stop offset="45%"  stop-color="#302B63"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FCD34D"/>
+    </linearGradient>
+    <linearGradient id="goldGV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <radialGradient id="cGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#818CF8" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#302B63" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gShine" cx="38%" cy="35%" r="55%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="gGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="tShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4"
+                    flood-color="#0F0C29" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bgG)"/>
+  <ellipse cx="400" cy="380" rx="380" ry="340" fill="url(#cGlow)"/>
+
+  <!-- Rings -->
+  <circle cx="760" cy="80" r="180" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <circle cx="760" cy="80" r="130" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <circle cx="760" cy="80" r="80"  fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <circle cx="40"  cy="720" r="160" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <circle cx="40"  cy="720" r="110" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+  <!-- Dot grids -->
+  <g fill="rgba(255,255,255,0.07)">
+    <circle cx="648" cy="108" r="2.5"/><circle cx="676" cy="108" r="2.5"/><circle cx="704" cy="108" r="2.5"/>
+    <circle cx="648" cy="136" r="2.5"/><circle cx="676" cy="136" r="2.5"/><circle cx="704" cy="136" r="2.5"/>
+    <circle cx="648" cy="164" r="2.5"/><circle cx="676" cy="164" r="2.5"/><circle cx="704" cy="164" r="2.5"/>
+    <circle cx="96"  cy="636" r="2.5"/><circle cx="124" cy="636" r="2.5"/><circle cx="152" cy="636" r="2.5"/>
+    <circle cx="96"  cy="664" r="2.5"/><circle cx="124" cy="664" r="2.5"/><circle cx="152" cy="664" r="2.5"/>
+    <circle cx="96"  cy="692" r="2.5"/><circle cx="124" cy="692" r="2.5"/><circle cx="152" cy="692" r="2.5"/>
+  </g>
+  <line x1="0" y1="600" x2="200" y2="800" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="800" y2="200" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- Globe -->
+  <circle cx="400" cy="192" r="96" fill="rgba(99,102,241,0.2)" filter="url(#gGlow)"/>
+  <circle cx="400" cy="192" r="80" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+  <circle cx="400" cy="192" r="80" fill="url(#gShine)"/>
+  <line x1="320" y1="192" x2="480" y2="192" stroke="#F59E0B" stroke-width="1.5"/>
+  <ellipse cx="400" cy="192" rx="36" ry="80" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  <path d="M 335 162 A 65 25 0 0 1 465 162" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <path d="M 335 222 A 65 25 0 0 0 465 222" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <g transform="translate(454,234) rotate(-12)" filter="url(#gGlow)">
+    <path d="M0,0 L0,34 L9,26 L15,42 L20,40 L14,24 L24,24 Z"
+          fill="url(#goldGV)" stroke="#0F0C29" stroke-width="1.2" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Top gold rule -->
+  <rect x="110" y="314" width="580" height="1.5" rx="1" fill="url(#goldG)" opacity="0.65"/>
+  <rect x="394" y="308" width="12" height="12" rx="2" fill="url(#goldG)" transform="rotate(45 400 314)"/>
+
+  <!-- Arabic name -->
+  <text x="400" y="393"
+        font-family="Tahoma,'Segoe UI',Arial,sans-serif"
+        font-size="70" font-weight="900" fill="#FFFFFF"
+        text-anchor="middle" filter="url(#tShadow)">آدم الحدسي</text>
+
+  <!-- Latin name italic -->
+  <text x="400" y="428"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="18" font-weight="700" font-style="italic"
+        fill="rgba(255,255,255,0.40)" text-anchor="middle" letter-spacing="6">Adam Elhaddassi</text>
+
+  <!-- Gold dots -->
+  <circle cx="385" cy="455" r="4" fill="url(#goldG)"/>
+  <circle cx="400" cy="455" r="4" fill="url(#goldG)"/>
+  <circle cx="415" cy="455" r="4" fill="url(#goldG)"/>
+
+  <!-- Service Arabic -->
+  <text x="400" y="505"
+        font-family="Tahoma,'Segoe UI',Arial,sans-serif"
+        font-size="30" font-weight="700" fill="url(#goldG)"
+        text-anchor="middle" filter="url(#gGlow)">تصميم مواقع احترافية</text>
+
+  <!-- PROFESSIONAL WEB DESIGN -->
+  <text x="400" y="548"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="21" font-weight="700"
+        fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="4">PROFESSIONAL WEB DESIGN</text>
+
+  <!-- Divider -->
+  <rect x="160" y="578" width="480" height="1" rx="0.5" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- Email row -->
+  <g transform="translate(172,614)">
+    <rect x="0" y="0" width="22" height="15" rx="2" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <polyline points="0,0 11,9 22,0" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+  </g>
+  <text x="204" y="627"
+        font-family="Arial,sans-serif"
+        font-size="16" font-weight="600"
+        fill="rgba(255,255,255,0.92)" text-anchor="start">elhaddassiadam@gmail.com</text>
+
+  <!-- Separator dot -->
+  <circle cx="442" cy="620" r="3" fill="rgba(245,158,11,0.60)"/>
+
+  <!-- Phone row -->
+  <g transform="translate(455,610)">
+    <rect x="0" y="0" width="15" height="21" rx="3" fill="none" stroke="#F59E0B" stroke-width="1.5"/>
+    <circle cx="7.5" cy="17.5" r="1.8" fill="#F59E0B"/>
+    <line x1="4" y1="4" x2="11" y2="4" stroke="rgba(245,158,11,0.4)" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <text x="480" y="627"
+        font-family="Arial,sans-serif"
+        font-size="16" font-weight="600"
+        fill="rgba(255,255,255,0.92)" text-anchor="start">+212 693 680 068</text>
+
+  <!-- Bottom gold rule -->
+  <rect x="110" y="655" width="580" height="1.5" rx="1" fill="url(#goldG)" opacity="0.50"/>
+
+  <!-- Domain -->
+  <text x="400" y="710"
+        font-family="Arial,sans-serif"
+        font-size="28" font-weight="700" fill="#FFFFFF"
+        text-anchor="middle" letter-spacing="2" filter="url(#tShadow)">elhaddassiadam.com</text>
+  <rect x="196" y="720" width="408" height="2" rx="1" fill="url(#goldG)" opacity="0.45"/>
+
+  <!-- Corner brackets -->
+  <path d="M 50 50 L 50 80 L 80 80"       fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 750 50 L 750 80 L 720 80"    fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 50 750 L 50 720 L 80 720"    fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M 750 750 L 750 720 L 720 720" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
+
+<canvas id="canvas" width="800" height="800"></canvas>
+
+<script>
+function downloadLogo() {
+  const svg    = document.getElementById('logo');
+  const canvas = document.getElementById('canvas');
+  const ctx    = canvas.getContext('2d');
+  const msg    = document.getElementById('msg');
+
+  msg.textContent = '⏳ جاري التحويل...';
+
+  const svgData = new XMLSerializer().serializeToString(svg);
+  const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+  const url     = URL.createObjectURL(svgBlob);
+
+  const img = new Image();
+  img.onload = function () {
+    ctx.clearRect(0, 0, 800, 800);
+    ctx.drawImage(img, 0, 0, 800, 800);
+    URL.revokeObjectURL(url);
+
+    try {
+      const pngUrl = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.download = 'adam-elhaddassi-logo.png';
+      a.href = pngUrl;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      msg.textContent = '✅ تم التحميل بنجاح!';
+    } catch (e) {
+      msg.textContent = '⚠️ خطأ: ' + e.message;
+    }
+  };
+  img.onerror = function () {
+    msg.textContent = '⚠️ فشل التحميل، جرّب Chrome';
+  };
+  img.src = url;
+}
+</script>
+</body>
+</html>
